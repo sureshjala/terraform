@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'TERRAFORM' }
+    agent { label 'py3.9' }
     stages {
         stage ("terraform init") {
             steps {
