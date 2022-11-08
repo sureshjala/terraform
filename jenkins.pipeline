@@ -1,9 +1,9 @@
 pipeline {
     agent { label "TERRAFORM"  }
     stages {
-        stage ('vcs') {
+        stage('Checkout') {
             steps {
-                git branch: 'main', credentialsId: 'gitnew', url: 'https://github.com/sureshjala/terraform.git'
+            checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/sureshjala/terraform.git']]])'
             }
         }
         stage ('git checkout') {
