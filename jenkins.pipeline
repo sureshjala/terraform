@@ -3,20 +3,26 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-            checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/sureshjala/terraform.git']]])'
+            git branch: 'master', url: 'https://github.com/sureshjala/terraform.git'
             }
         }
+
         stage ('git checkout') {
             steps {
-                sh 'git checkout main'
+                sh 'git checkout'
             }
         }
-        stage (terraform init) {
+        stage ('terraform init') {
             steps {
                 sh 'terraform init'
             }
         }
-        stage (terraform validate) {
+        stage ('terraform validate') {
+            steps {
+                sh 'terraform validate'
+            }
+        }
+        stage ('terraform apply') {
             steps {
                 sh 'terraform -auto-approve'
             }
