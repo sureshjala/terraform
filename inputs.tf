@@ -22,8 +22,3 @@ variable "az" {
      default = [ "us-west-2a","us-west-2b" ]
   
 }
-variable "ec2_amiid" {
-    type = string
-    default = "ami-017fecd1353bcc96e"
-  
-}
