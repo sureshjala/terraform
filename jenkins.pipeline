@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage ('vcs') {
             steps {
-                git branch: 'main',url: 'git@github.com:sureshjala/terraform.git',credentialsId: 'my-private-key-credential-id'
+                git branch: 'main', credentialsId: 'gitnew', url: 'https://github.com/sureshjala/terraform.git'
             }
         }
         stage ('git checkout') {
