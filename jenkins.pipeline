@@ -1,0 +1,26 @@
+pipeline {
+    agent { label "TERRAFORM"  }
+    stages {
+        stage ('vcs') {
+            steps {
+                git branch: 'main',url: 'git@github.com:sureshjala/terraform.git',credentialsId: 'my-private-key-credential-id'
+            }
+        }
+        stage ('git checkout') {
+            steps {
+                sh 'git checkout main'
+            }
+        }
+        stage (terraform init) {
+            steps {
+                sh 'terraform init'
+            }
+        }
+        stage (terraform validate) {
+            steps {
+                sh 'terraform -auto-approve'
+            }
+        }
+    }
+
+}
