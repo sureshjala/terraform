@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage (vcs) {
             steps {
-                git branch: '',url: ''
+                git branch: 'vpcnew',url: 'https://github.com/sureshjala/terraform.git'
             }
         }
         stage('checkout') {
