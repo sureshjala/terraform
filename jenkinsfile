@@ -1,0 +1,31 @@
+pipeline {
+    agent {label'TERRAFORM' }
+    stages {
+        stage (vcs) {
+            steps {
+                git branch: '',url: ''
+            }
+        }
+        stage('checkout') {
+            steps {
+                sh ' git checkout'
+            }
+        }
+        stage ('terraform init') {
+            steps {
+                sh 'terraform init'
+            }
+        }
+        stage ('terraform validate') {
+            steps {
+                sh 'terraform validate'
+            }
+        }
+        stage ('terraform apply') {
+            steps {
+                sh 'terraform apply -auto-approve'
+            }
+        }
+
+    }
+}
